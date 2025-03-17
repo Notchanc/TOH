@@ -1,1 +1,69 @@
+Aim: Goodness of fit test
 
+A) perform goodness of fit test using chi-squared test
+
+code:
+import numpy as np
+from scipy.stats import chisquare
+
+observed = [50, 30, 40]
+expected = [40, 40, 40]
+
+chi2_statistic, p_value = chisquare(f_obs=observed, f_exp=expected)
+
+print(f"Chi2-Statistic: {chi2_statistic}")
+print(f"P-Value: {p_value}")
+
+alpha = 0.05
+if p_value < alpha:
+    print("Reject the null hypothesis: The observed frequencies do not match the expected frequencies.")
+else:
+    print("Fail to reject the null hypothesis: The observed frequencies match the expected frequencies.")
+
+
+B) perform testing of hypothesis using  chi square test of independence 
+
+code:
+
+import numpy as np
+from scipy.stats import chi2_contingency
+
+data = np.array([
+    [60, 40],
+    [80, 20],
+    [90, 10]
+])
+
+chi2_statistic, p_value, dof, expected = chi2_contingency(data)
+
+print("Chi-Square Statistic:", chi2_statistic)
+print("P-value:", p_value)
+print("Degrees of Freedom:", dof)
+print("Expected Frequencies:")
+print(expected)
+
+alpha = 0.05
+if p_value < alpha:
+    print("Reject the null hypothesis: The variables are not independent.")
+else:
+    print("Fail to reject the null hypothesis: The variables are independent.")
+
+
+C) perform goodness of fit test using KS test
+
+code:
+import numpy as np
+from scipy.stats import kstest, norm
+
+data = np.random.normal(loc=0, scale=1, size=100)
+
+ks_statistic, p_value = kstest(data, 'norm', args=(0, 1))
+
+print(f"KS Statistic: {ks_statistic}")
+print(f"P-value: {p_value}")
+
+alpha = 0.05
+if p_value < alpha:
+    print("Reject the null hypothesis: The data does not follow the normal distribution.")
+else:
+    print("Fail to reject the null hypothesis: The data follows the normal distribution.")
