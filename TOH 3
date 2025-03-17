@@ -1,0 +1,53 @@
+Aim: variance testing
+
+Q1) A) perform using f-test of two variance
+
+code:
+import numpy as np
+from scipy import stats
+
+data1 = [12, 15, 14, 10, 13, 18, 16, 19, 11, 17]
+data2 = [22, 25, 28, 21, 27, 23, 30, 22, 26, 29]
+
+var1 = np.var(data1, ddof=1)
+var2 = np.var(data2, ddof=1)
+
+f_statistic = var1 / var2 if var1 > var2 else var2 / var1
+
+df1 = len(data1) - 1
+df2 = len(data2) - 1
+
+p_value = stats.f.sf(f_statistic, df1, df2)
+
+print(f"Variance of data1: {var1}")
+print(f"Variance of data2: {var2}")
+print(f"F-statistic: {f_statistic}")
+print(f"Degrees of freedom: df1 = {df1}, df2 = {df2}")
+print(f"P-value: {p_value}")
+
+alpha = 0.05
+if p_value < alpha:
+    print("Reject the null hypothesis: The variances are significantly different.")
+else:
+    print("Fail to reject the null hypothesis: The variances are not significantly different.")
+
+B) perform testing of homogeneity 
+
+code:
+import numpy as np
+from scipy import stats
+
+data = np.array([[20, 30, 50], [30, 40, 30]])
+
+chi2_stat, p_value, dof, expected = stats.chi2_contingency(data)
+
+print(f"Chi-square statistic: {chi2_stat}")
+print(f"P-value: {p_value}")
+print(f"Degrees of freedom: {dof}")
+print(f"Expected frequencies:\n{expected}")
+
+alpha = 0.05
+if p_value < alpha:
+    print("Reject the null hypothesis: The populations do not have the same distribution.")
+else:
+    print("Fail to reject the null hypothesis: The populations have the same distribution.")
