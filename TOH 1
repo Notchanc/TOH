@@ -1,0 +1,74 @@
+Aim: Hypothesis Testing for Mean
+
+Q1 A) perform testing of hypothesis using one sample t-test
+
+code:
+import numpy as np
+from scipy import stats
+
+sample_data = [68, 72, 75, 69, 71, 74, 70, 73, 76, 69]
+
+population_mean = 70
+
+t_statistic, p_value = stats.ttest_1samp(sample_data, population_mean)
+
+print(f"T-statistic: {t_statistic}")
+print(f"P-value: {p_value}")
+
+alpha = 0.05
+if p_value < alpha:
+    print("Reject the null hypothesis: The sample mean is significantly different from the population")
+else:
+    print("Fail to reject the null hypothesis: There is no significant difference from the population mean")
+
+
+B) perform testing of hypothesis using two sample t-test
+
+code:
+import numpy as np
+from scipy import stats
+
+class1_scores = [85, 88, 90, 87, 85, 84, 91, 86, 89, 87]
+class2_scores = [78, 75, 89, 82, 80, 77, 76, 81, 79, 80]
+
+t_statistic, p_value = stats.ttest_ind(class1_scores, class2_scores)
+
+print(f"T-statistic: {t_statistic}")
+print(f"P-value: {p_value}")
+
+alpha = 0.05
+if p_value < alpha:
+    print("Reject the null hypothesis: The means of the two groups are significantly different")
+else:
+    print("Fail to reject the null hypothesis: There is no significant difference between the means of the two groups")
+
+
+C) perform testing of hypothesis using z-test
+
+code:
+import numpy as np
+from scipy import stats
+
+sample_data = [72, 74, 69, 18, 77, 75, 73, 78, 76, 79,
+               71, 74, 72, 80, 74, 76, 75, 79, 70, 73,
+               78, 76, 71, 79, 75, 74, 77, 72, 74, 76,
+               73, 70, 72, 74, 75, 80, 77, 75, 74, 73,
+               72, 76, 78, 74, 75, 79, 77, 72, 80, 73]
+
+population_mean = 75
+population_std_dev = 10
+
+sample_size = len(sample_data)
+sample_mean = np.mean(sample_data)
+
+z_score = (sample_mean - population_mean) / (population_std_dev / np.sqrt(sample_size))
+p_value = 2 * (1 - stats.norm.cdf(abs(z_score)))
+
+print(f"Z-score: {z_score}")
+print(f"P-score: {p_value}")
+
+alpha = 0.05
+if p_value < alpha:
+    print("Reject the null hypothesis: The sample mean is significantly different from the population mean")
+else:
+    print("Fail to reject the null hypothesis: There is no significant difference from the population mean")
