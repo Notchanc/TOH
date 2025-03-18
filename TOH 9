@@ -1,0 +1,35 @@
+Aim: perform spectral Analysis 
+
+A) perform spectral Analysis 
+
+code:
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+fs = 500
+t = np.arange(0, 1, 1/fs)
+
+f1, f2 = 10, 50
+signal = np.sin(2 * np.pi * f1 * t) + 0.5 * np.sin(2 * np.pi * f2 * t)
+
+n = len(t)
+frequencies = np.fft.fftfreq(n, 1/fs)
+fft_values = np.fft.fft(signal)
+
+plt.figure(figsize=(10, 6))
+
+plt.subplot(2, 1, 1)
+plt.plot(t, signal)
+plt.title("Time-domain Signal")
+plt.xlabel("Time [s]")
+plt.ylabel("Amplitude")
+
+plt.subplot(2, 1, 2)
+plt.plot(frequencies[:n//2], np.abs(fft_values)[:n//2])
+plt.title("Frequency Spectrum")
+plt.xlabel("Frequency [Hz]")
+plt.ylabel("Amplitude")
+
+plt.tight_layout()
+plt.show()
