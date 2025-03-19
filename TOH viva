@@ -1,0 +1,89 @@
+Here are the answers to the SYDS Viva questions:
+
+1. Formulas and Applications of Statistical Tests:
+
+Z-test:
+
+
+
+
+Z = \frac{\bar{X} - \mu}{\sigma / \sqrt{n}}
+
+T-test:
+
+
+t = \frac{\bar{X} - \mu}{s / \sqrt{n}}
+
+F-test:
+
+
+F = \frac{S^2_1}{S^2_2}
+
+Chi-Square Test:
+
+
+\chi^2 = \sum \frac{(O - E)^2}{E}
+
+Kolmogorov-Smirnov (KS) Test:
+
+
+D_n = \sup_x |F_n(x) - F(x)|
+
+2. ANOVA and Its Applications:
+
+One-Way ANOVA: Compares means across one independent variable.
+
+Two-Way ANOVA: Analyzes the effect of two factors.
+
+ANCOVA: Includes covariates in ANOVA.
+
+MANOVA: Analyzes multiple dependent variables.
+
+Real-life Application: Used in experimental research, e.g., comparing test scores across different teaching methods.
+
+
+
+3. Regression and Its Types:
+
+Linear Regression (y = mx + c)
+
+Multiple Regression
+
+Logistic Regression
+
+Polynomial Regression
+
+Lasso and Ridge Regression
+
+
+
+4. Applications of Regression Analysis:
+
+Predicting Sales
+
+Stock Market Analysis
+
+Medical Diagnosis
+
+Weather Forecasting
+
+
+
+5. Spatial Series and Auto-Regression:
+
+Spatial Series: Data collected over space (e.g., air pollution levels in different cities).
+
+Spatial Auto-Regression (SAR): Models spatial dependencies in data.
+
+
+
+6. Time Series Analysis Applications:
+
+Moving Averages: Used in stock market trend analysis.
+
+Trend Analysis: Used in economic forecasting.
+
+
+
+
+Let me know if you need explanations for any of these topics!
